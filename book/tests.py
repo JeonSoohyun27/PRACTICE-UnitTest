@@ -26,6 +26,11 @@ class AuthorTest(TestCase):
         response = client.post('/book/author', json.dumps(author), content_type='application/json')
 
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), 
+            {
+                'message' : 'SUCCESS'
+            }
+        )
 
     def test_authorkview_post_duplicated_name(self):
         client = Client()
